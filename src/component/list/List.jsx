@@ -28,8 +28,9 @@ const List = ({
       <tbody>
         {rows
           .filter((order) => order["&id"].includes(searchText))
-          .map((row) => (
+          .map((row, index) => (
             <ListRow
+              key={index}
               row={row}
               timeData={timeData}
               setSelectedOrderDetails={setSelectedOrderDetails}
