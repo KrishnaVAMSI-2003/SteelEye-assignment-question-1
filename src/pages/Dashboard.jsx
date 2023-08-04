@@ -54,6 +54,7 @@ const Dashboard = () => {
           rows={mockData.results}
           timeData={timestamps.results}
           currency={currency}
+          searchText={searchText}
         />
       </div>
     </div>

@@ -6,7 +6,7 @@ import ListHeaderCell from "./ListHeaderCell";
 
 import styles from "./List.module.css";
 
-const List = ({ rows, timeData, currency }) => {
+const List = ({ rows, timeData, currency, searchText }) => {
   return (
     <table className={styles.container}>
       <thead>
@@ -19,22 +19,24 @@ const List = ({ rows, timeData, currency }) => {
         </ListHeader>
       </thead>
       <tbody>
-        {rows.map((row) => (
-          <ListRow>
-            <ListRowCell>{row["&id"]}</ListRowCell>
-            <ListRowCell>{row.executionDetails.buySellIndicator}</ListRowCell>
-            <ListRowCell>{row.executionDetails.orderStatus}</ListRowCell>
-            <ListRowCell>
-              {
-                timeData.find((order) => order["&id"] === row["&id"]).timestamps
-                  .orderSubmitted
-              }
-            </ListRowCell>
-            <ListRowCell>
-              {row.bestExecutionData.orderVolume[currency]}
-            </ListRowCell>
-          </ListRow>
-        ))}
+        {rows
+          .filter((order) => order["&id"].includes(searchText))
+          .map((row) => (
+            <ListRow>
+              <ListRowCell>{row["&id"]}</ListRowCell>
+              <ListRowCell>{row.executionDetails.buySellIndicator}</ListRowCell>
+              <ListRowCell>{row.executionDetails.orderStatus}</ListRowCell>
+              <ListRowCell>
+                {
+                  timeData.find((order) => order["&id"] === row["&id"])
+                    .timestamps.orderSubmitted
+                }
+              </ListRowCell>
+              <ListRowCell>
+                {row.bestExecutionData.orderVolume[currency]}
+              </ListRowCell>
+            </ListRow>
+          ))}
       </tbody>
     </table>
   );
