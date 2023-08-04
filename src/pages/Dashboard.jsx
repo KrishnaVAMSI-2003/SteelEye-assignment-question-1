@@ -23,7 +23,10 @@ const Dashboard = () => {
   return (
     <div>
       <div className={styles.header}>
-        <HeaderTitle primaryTitle="Orders" secondaryTitle="5 orders" />
+        <HeaderTitle
+          primaryTitle="Orders"
+          secondaryTitle={`${mockData.results.length} orders`}
+        />
         <div className={styles.actionBox}>
           <Search
             value={searchText}
