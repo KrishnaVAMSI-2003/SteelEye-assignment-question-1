@@ -6,7 +6,14 @@ import ListHeaderCell from "./ListHeaderCell";
 
 import styles from "./List.module.css";
 
-const List = ({ rows, timeData, currency, searchText }) => {
+const List = ({
+  rows,
+  timeData,
+  currency,
+  searchText,
+  setSelectedOrderDetails,
+  setSelectedOrderTimeStamps,
+}) => {
   return (
     <table className={styles.container}>
       <thead>
@@ -22,7 +29,12 @@ const List = ({ rows, timeData, currency, searchText }) => {
         {rows
           .filter((order) => order["&id"].includes(searchText))
           .map((row) => (
-            <ListRow>
+            <ListRow
+              row={row}
+              timeData={timeData}
+              setSelectedOrderDetails={setSelectedOrderDetails}
+              setSelectedOrderTimeStamps={setSelectedOrderTimeStamps}
+            >
               <ListRowCell>{row["&id"]}</ListRowCell>
               <ListRowCell>{row.executionDetails.buySellIndicator}</ListRowCell>
               <ListRowCell>{row.executionDetails.orderStatus}</ListRowCell>

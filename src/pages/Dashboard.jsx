@@ -55,6 +55,8 @@ const Dashboard = () => {
           timeData={timestamps.results}
           currency={currency}
           searchText={searchText}
+          setSelectedOrderDetails={setSelectedOrderDetails}
+          setSelectedOrderTimeStamps={setSelectedOrderTimeStamps}
         />
       </div>
     </div>
