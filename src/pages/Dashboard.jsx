@@ -50,7 +50,7 @@ const Dashboard = () => {
             title="Selected Order Timestamps"
           />
         </div>
-        <List rows={mockData.results} />
+        <List rows={mockData.results} timeData={timestamps.results} />
       </div>
     </div>
   );
